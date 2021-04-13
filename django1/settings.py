@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '28+n&qtri@(0%w297p+gaq15g_-kql7si0g&*^^lqfb$a+-=$%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# debug True = modo desenvolvimento / debug False = modo producao
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -118,4 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/'   # usado durante o desenvolvimento
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # usado durante a produção
+
+LOGOUT_REDIRECT_URL = 'index'
